@@ -11,4 +11,4 @@ A simple program to read what game you are playing by getting the details from D
 
 **Now Playing**
 
-<img src=http://127.0.0.1:8000/ width="256" height="64" alt="Now Playing">
+<img src=http://18.130.229.47:80 width="256" height="64" alt="Now Playing">
