@@ -59,7 +59,6 @@ async def on_ready():
         game_name = me.activities[0].name
         game_state = me.activities[0].state
         image_url = me.activities[0].large_image_url
-        print(game_name)
 
 @client.event
 async def on_member_update(member_before, member_after):
