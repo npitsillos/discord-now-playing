@@ -12,7 +12,7 @@ jobs:
     - name: Discord Now Playing
       run: |
         mkdir -p ~/.ssh
-        echo "${{ secrets.HOST }}" > ~/.ssh/known_hosts
-        eval `ssh-agent`
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
+        ssh-agent -a /tmp/ssh_agent.sock > /dev/null
         ssh-add - <<< "${{ secrets.EC2_KEY }}"
-        ssh ubuntu@ec2-3-8-149-83.eu-west-2.compute.amazonaws.com 'sudo rm -rf discord-now-playing && git clone https://github.com/npitsillos/discord-now-playing.git && cd discord-now-playing && echo TOKEN="${{ secrets.TOKEN }}" > .env && echo USERNAME="${{ secrets.USERNAME }}" >> .env && docker-compose -f docker-compose.yml up --build -d'
+        ssh ubuntu@ec2-18-130-229-47.eu-west-2.compute.amazonaws.com 'sudo rm -rf discord-now-playing && git clone https://github.com/npitsillos/discord-now-playing.git && cd discord-now-playing && echo TOKEN="${{ secrets.TOKEN }}" > .env && echo USERNAME="${{ secrets.USERNAME }}" >> .env && docker-compose -f docker-compose.yml up --build -d'
