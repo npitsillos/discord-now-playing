@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  discord:
+    build: .
+    container_name: discord-now-playing
+    restart: always
+    command: bash -c "uvicorn discord_now_playing.main:app --host 0.0.0.0 --port 80"
+    ports:
+      - '80:80'
