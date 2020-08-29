@@ -20,8 +20,8 @@ GAME_STYLE = "box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 3px 10px rgba(0,0,0,0.05)
 
 
 load_dotenv()
-DISCORD_USERNAME = "pitsillos1"#os.getenv("USERNAME")
-TOKEN = "NzQ2NDMzMTExMjE0MjYwMzc3.X0AQAQ.CuvWdSJm_bYf6jVFAJIXqvGfeq4"#os.getenv("TOKEN")
+DISCORD_USERNAME = os.getenv("USERNAME")
+TOKEN = os.getenv("TOKEN")
 
 game_name = None
 game_state = None
