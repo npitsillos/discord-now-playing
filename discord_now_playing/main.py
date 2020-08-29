@@ -20,8 +20,8 @@ GAME_STYLE = "box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 3px 10px rgba(0,0,0,0.05)
 
 
 load_dotenv()
-DISCORD_USERNAME = os.getenv("USERNAME")
-TOKEN = os.getenv("TOKEN")
+DISCORD_USERNAME = "pitsillos1"#os.getenv("USERNAME")
+TOKEN = "NzQ2NDMzMTExMjE0MjYwMzc3.X0AQAQ.CuvWdSJm_bYf6jVFAJIXqvGfeq4"#os.getenv("TOKEN")
 
 game_name = None
 game_state = None
@@ -36,12 +36,17 @@ async def setup_bot():
     
 @app.get("/")
 def root():
+    global image_url
+    global game_name
+    base_64_str = NO_GAME_IMAGE
     if image_url is not None:
-        res = requests.get(image_url)
-        base_64_str = "data:image/png;base64,"  + base64.b64encode(res.content).decode("utf-8") 
+        res = requests.get(image_url) 
+        base_64_str = "da_ta:image/png;base64,"  + base64.b64encode(res.content).decode("utf-8")
+
+    if game_name is not None:
         data = "<svg fill='none' width='256' height='64' viewBox='0 0 256 64' xmlns='http://www.w3.org/2000/svg'><foreignObject width='256' height='64'><div xmlns='http://www.w3.org/1999/xhtml'><img src='{0}' style='{1}' alt='{2}' width='48' height='48'></img> {3} </div></foreignObject></svg>".format(base_64_str, GAME_STYLE, game_name.replace(' ', ''), game_name)
     else:
-        data = "<svg fill='none' width='256' height='64' viewBox='0 0 256 64' xmlns='http://www.w3.org/2000/svg'><foreignObject width='256' height='64'><div xmlns='http://www.w3.org/1999/xhtml'><img src='{0}' style='{1}' width='48' height='48'></img>Nothing Playing</div></foreignObject></svg>".format(NO_GAME_IMAGE, NO_GAME_STYLE)
+        data = "<svg fill='none' width='256' height='64' viewBox='0 0 256 64' xmlns='http://www.w3.org/2000/svg'><foreignObject width='256' height='64'><div xmlns='http://www.w3.org/1999/xhtml'><img src='{0}' style='{1}' width='48' height='48'></img>Nothing Playing</div></foreignObject></svg>".format(base_64_str, NO_GAME_STYLE)
     return Response(content=data,  media_type="image/svg+xml")
 
 @client.event

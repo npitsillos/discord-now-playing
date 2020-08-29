@@ -1,0 +1,3 @@
+[console_scripts]
+game-playing = discord_now_playing.main:launch
+

@@ -1,0 +1,10 @@
+README.md
+setup.py
+discord_now_playing/__init__.py
+discord_now_playing/main.py
+discord_now_playing.egg-info/PKG-INFO
+discord_now_playing.egg-info/SOURCES.txt
+discord_now_playing.egg-info/dependency_links.txt
+discord_now_playing.egg-info/entry_points.txt
+discord_now_playing.egg-info/requires.txt
+discord_now_playing.egg-info/top_level.txt
